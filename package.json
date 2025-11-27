@@ -1,25 +1,23 @@
 {
-  "name": "prueba4",
+  "name": "proyecto-lista-libros-ci",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aplicación web para gestionar una lista de libros.",
+  "main": "js/main6.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "docs": "jsdoc -c jsdoc.json",
+    "start": "node js/main6.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/imartor99/prueba4Vercel.git"
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/imartor99/prueba4Vercel/issues"
-  },
-  "homepage": "https://github.com/imartor99/prueba4Vercel#readme",
   "devDependencies": {
     "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
-    "jsdoc": "^4.0.5"
+    "jsdoc": "^4.0.5",
+    "jest-environment-jsdom": "^30.2.0"
   }
 }
