@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop # El workflow se activa con cada push a la rama develop
+      - main
 
 jobs:
   test:
