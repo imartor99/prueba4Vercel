@@ -49,12 +49,12 @@ jobs:
         # Llama al script 'docs' en package.json (asumiendo que es: "docs": "jsdoc -c jsdoc.json" o similar)
         run: npm run docs
         
-      # Opcional: Si quieres guardar la documentación generada como un artefacto:
-      #- name: Upload Documentation Artifact
-      #  uses: actions/upload-artifact@v4
-      #  with:
-      #    name: jsdoc-html-docs
-      #    path: docs/ # Asume que jsdoc genera archivos en una carpeta llamada 'docs'
+      
+      - name: Upload Documentation Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jsdoc-documentation
+          path: docs/ # Asume que jsdoc genera archivos en una carpeta llamada 'docs'
 
   deploy:
     name: 🚀 Despliegue de la Aplicación Principal en Vercel
@@ -66,6 +66,12 @@ jobs:
       # en el Job anterior y el resto de los archivos del proyecto.
       - name: Checkout del repositorio (Para despliegue final)
         uses: actions/checkout@v4
+        
+      - name: Download Documentation Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jsdoc-documentation
+          path: docs/ # Asume que jsdoc genera archivos en una carpeta llamada 'docs'
         
       - name: Despliegue de la APLICACIÓN COMPLETA en Vercel
         uses: amondnet/vercel-action@v25
